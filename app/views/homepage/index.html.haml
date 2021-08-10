@@ -1,7 +1,5 @@
-= month_calendar do |date|
+= month_calendar events: @meetings do |date, meetings|
   = date.strftime("%d") 
 
-
-
-
--# = render :partial => 'simple_calendar/calendar'
+  - meetings.each do |meeting|
+    = meeting.name 

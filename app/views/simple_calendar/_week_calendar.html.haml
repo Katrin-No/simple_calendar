@@ -1,16 +1,22 @@
 .simple-calendar
   .calendar-heading
-    = link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view
-    - if calendar.number_of_weeks == 1
-      %span.calendar-title
-        = t('simple_calendar.week', default: 'Week')
-        = calendar.week_number
-    - else
-      %span.calendar-title
-        = t('simple_calendar.week', default: 'Week')
-        = calendar.week_number
-        \- #{calendar.end_week}
-    = link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view
+    %ul.nav
+      %li.nav-item
+        %span.calendar-title
+          = link_to t('date.month_names')[start_date.month], month_path, class: "marg-r"
+      %li.nav-item
+        = link_to t('simple_calendar.previous', default: '<<'), calendar.url_for_previous_view
+        - if calendar.number_of_weeks == 1
+          %span.calendar-title
+            = t('simple_calendar.week', default: 'Week')
+            = calendar.week_number
+        - else
+          %span.calendar-title
+            = t('simple_calendar.week', default: 'Week')
+            = calendar.week_number
+            \- #{calendar.end_week}
+        = link_to t('simple_calendar.next', default: '>>'), calendar.url_for_next_view
+
   %table.table.table-striped.table-responsive
     %thead
       %tr

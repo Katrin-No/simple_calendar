@@ -1,0 +1,16 @@
+= form_for @meeting do |f|
+  - if @meeting.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@meeting.errors.count, "error")} prohibited this meeting from being saved:"
+      %ul
+        - @meeting.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :starts_at
+    = f.datetime_select :starts_at, class: 'exampleFormControlSelect1'
+
+  %button.btn.btn-primary{:type => "submit"} Save

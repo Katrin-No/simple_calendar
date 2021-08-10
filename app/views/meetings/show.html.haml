@@ -1,0 +1,11 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @meeting.name
+%p
+  %b Starts at:
+  = @meeting.starts_at
+
+= link_to 'Edit', edit_meeting_path(@meeting)
+

@@ -1,10 +1,22 @@
 .simple-calendar
   .calendar-heading
-    = link_to t('simple_calendar.previous', default: '<<'), calendar.url_for_previous_view
-    %span.calendar-title
-      = t('date.month_names')[start_date.month]
-      = start_date.year
-    = link_to t('simple_calendar.next', default: '>>'), calendar.url_for_next_view
+    %ul.nav
+      %li.nav-item
+        = link_to t('simple_calendar.previous', default: '<<'), calendar.url_for_previous_view
+        %span.calendar-title
+          = t('date.month_names')[start_date.month]
+          = start_date.year
+        = link_to t('simple_calendar.next', default: '>>'), calendar.url_for_next_view, class: "marg-r"
+      %li.nav-item
+        %span.calendar-title
+          = link_to "Add event", new_meeting_path, class: "marg-r"
+      %li.nav-item
+        %span.calendar-title
+          = link_to "All events", meetings_path
+      -# %li.nav-item
+      -#   %span.calendar-title
+      -#     = link_to "Week", week_path
+
   %table.table.table-striped.table-responsive
     %thead
       %tr

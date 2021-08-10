@@ -1,0 +1,7 @@
+= week_calendar number_of_weeks: 2 do |date|
+  = date.strftime("%d")
+
+-# = calendar number_of_days: 7 do |date|
+-#   = date.strftime("%d")
+
+= link_to "Meetings", meetings_path
