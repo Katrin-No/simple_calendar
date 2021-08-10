@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  starts_at: 2021-08-10 13:57:13
+  start_time: 2021-08-10 13:57:13
 
 two:
   name: MyString
-  starts_at: 2021-08-10 13:57:13
+  start_time: 2021-08-10 13:57:13

@@ -15,7 +15,7 @@ class MeetingsTest < ApplicationSystemTestCase
     click_on "New Meeting"
 
     fill_in "Name", with: @meeting.name
-    fill_in "Starts at", with: @meeting.starts_at
+    fill_in "Starts at", with: @meeting.start_time
     click_on "Create Meeting"
 
     assert_text "Meeting was successfully created"
@@ -27,7 +27,7 @@ class MeetingsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Name", with: @meeting.name
-    fill_in "Starts at", with: @meeting.starts_at
+    fill_in "Starts at", with: @meeting.start_time
     click_on "Update Meeting"
 
     assert_text "Meeting was successfully updated"
