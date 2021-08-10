@@ -1,0 +1,14 @@
+.simple-calendar
+  .calendar-heading
+    %ul.nav.flex
+      %li.nav-item
+        <<
+        %span.calendar-title
+          = link_to current_month, month_path
+        >>
+      %li.nav-item.end
+        %span.calendar-title
+          = link_to "Add event", new_meeting_path, class: "marg-r"
+      %li.nav-item
+        %span.calendar-title
+          = link_to "All events", meetings_path

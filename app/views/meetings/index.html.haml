@@ -1,4 +1,4 @@
-%h1 Listing meetings
+= render 'nav'
 
 %table
   %thead
@@ -17,7 +17,3 @@
         %td= link_to 'Show', meeting
         %td= link_to 'Edit', edit_meeting_path(meeting)
         %td= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Meeting', new_meeting_path
