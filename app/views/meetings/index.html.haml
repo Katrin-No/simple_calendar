@@ -1,19 +1,16 @@
 = render 'nav'
 
-%table
+%table.table.table-responsive
   %thead
     %tr
       %th Name
       %th Starts at
-      %th
-      %th
-      %th
+      %th{:colspan => "2"} Settings
 
   %tbody
     - @meetings.each do |meeting|
       %tr
-        %td= meeting.name
-        %td= meeting.start_time
-        %td= link_to 'Show', meeting
+        %td= link_to meeting.name, meeting
+        %td= meeting.start_time.strftime("%d.%m.%Y %H:%M")
         %td= link_to 'Edit', edit_meeting_path(meeting)
-        %td= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'x', meeting, method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,71 +1,67 @@
 = render 'meetings/nav'
 
--# - @habits.each do |habit|
--#   = habit.name 
--#   - if habit.confirmed_today?
--#     = habit.answer
--#   - else 
--#     nÖ
--#   💎
+%table.table.table-responsive
+  %thead
+    %tr
+      %th.w70 Habit
+      %th Done?
+      %th.right Points
+  %tbody    
+    - @habits.each do |habit|
+      %tr
+        %td= habit.name 
 
-- @habits.each do |habit|
-  .flex
-    .marg-r= habit.name 
+        - if habit.confirmed_today?
+          %td 
+            - if habit.answer
+              %button.btn.btn-info Yes!
+            - else 
+              %button.btn.btn-info No
 
-    - if habit.confirmed_today?
-      - if habit.answer
-        %button.btn.btn-info Yes!
-      - else 
-        %button.btn.btn-info No
+        - else
+          %td.flex
+            = form_with(url:answer_path, method: :post, scope: :habit_confirmation_answer) do |f|
+              = f.hidden_field :habit_id, value: habit.id
+              = f.hidden_field :answer, value: 1
+              %button.btn.btn-dark.marg-r1{:type => "submit"} Yes!
 
-    - else
-      = form_with(url:answer_path, method: :post, scope: :habit_confirmation_answer) do |f|
-        = f.hidden_field :habit_id, value: habit.id
-        = f.hidden_field :answer, value: 1
-        %button.btn.btn-dark{:type => "submit"} Yes!
-
-      .marg-r
-        = form_with(url:answer_path, method: :post, scope: :habit_confirmation_answer) do |f|
-          = f.hidden_field :habit_id, value: habit.id
-          = f.hidden_field :answer, value: 0
-          %button.btn.btn-dark{:type => "submit"} No
-    
-    = habit.habit_confirmations.where(answer: 1).count - habit.habit_confirmations.where(answer: 0).count
-    💎
-
--# %table.table.table-hover
--#   %thead
--#     %tr
--#       %th Habit
--#       %th Status
--#       %th Points
--#   %tbody
--#     - @habits.each do |habit|
--#       %tr
--#         %td= habit.name 
--#         - if habit.confirmed_today?
--#           %td= habit.answer
--#         - else 
--#           %td nÖ
--#         %td 💎
-
--# %table.table.table-hover
--#   %thead
--#     %tr
--#       %th Habit
--#       %th Status
--#       %th Points
--#   %tbody
--#     - @habits.each do |habit|
--#       %tr
--#         %td= habit.name 
--#         - if habit.confirmed_today?
--#           %td= habit.answer
--#         - else 
--#           %td nÖ
--#         %td 💎
+            
+            = form_with(url:answer_path, method: :post, scope: :habit_confirmation_answer) do |f|
+              = f.hidden_field :habit_id, value: habit.id
+              = f.hidden_field :answer, value: 0
+              %button.btn.btn-dark{:type => "submit"} No
+        
+        %td.right
+          = habit.habit_confirmations.where(answer: 1).count - habit.habit_confirmations.where(answer: 0).count
+          💎
 
 .collabsible
-  %button.btn.btn-primary.titel-font#add_habit= link_to "Add habbit"
+  %button.btn.btn-info.titel-font#add_habit= link_to "Add habbit"
   .form
     = render 'form'
+
+
+-# - @habits.each do |habit|
+-#   .flex
+-#     .marg-r= habit.name 
+
+-#     - if habit.confirmed_today?
+-#       - if habit.answer
+-#         %button.btn.btn-info Yes!
+-#       - else 
+-#         %button.btn.btn-info No
+
+-#     - else
+-#       = form_with(url:answer_path, method: :post, scope: :habit_confirmation_answer) do |f|
+-#         = f.hidden_field :habit_id, value: habit.id
+-#         = f.hidden_field :answer, value: 1
+-#         %button.btn.btn-dark{:type => "submit"} Yes!
+
+-#       .marg-r
+-#         = form_with(url:answer_path, method: :post, scope: :habit_confirmation_answer) do |f|
+-#           = f.hidden_field :habit_id, value: habit.id
+-#           = f.hidden_field :answer, value: 0
+-#           %button.btn.btn-dark{:type => "submit"} No
+    
+-#     = habit.habit_confirmations.where(answer: 1).count - habit.habit_confirmations.where(answer: 0).count
+-#     💎

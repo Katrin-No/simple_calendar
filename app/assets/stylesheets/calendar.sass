@@ -1,0 +1,25 @@
+.simple-calendar
+  .calendar-title
+    font-family: 'Quicksand', sans-serif
+    font-size: 1.5rem
+  .prev-month, .next-month
+    background-color: #1a2934 //#383c3f
+    color: rgb(209, 205, 199)
+  .day
+    color: rgb(209, 205, 199)
+    height: 120px
+  .today
+    background-color: #0096884a
+
+.event
+  font-family: 'Caveat', cursive
+  font-size: 1.5rem
+
+@media screen and (max-width: 530px)
+  table.table-responsive
+    display: block !important
+  .simple-calendar .day
+    height: 90px
+  .simple-calendar .calendar-title
+    font-family: 'Quicksand', sans-serif
+    font-size: 1.2rem
