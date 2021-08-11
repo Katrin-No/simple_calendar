@@ -6,7 +6,9 @@ class HabitController < ApplicationController
   end
 
   def answer
-    @habit_confirmation = HabitConfirmation.new(habit_confirmation_params).save!
+    @habit_confirmation = HabitConfirmation.new(habit_confirmation_params)
+    @habit_confirmation.confirmation_date = Date.today
+    @habit_confirmation.save!
     redirect_to habits_path
   end
 

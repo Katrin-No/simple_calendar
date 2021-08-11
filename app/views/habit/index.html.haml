@@ -12,19 +12,25 @@
   .flex
     .marg-r= habit.name 
 
-    
-    = form_with(url:answer_path, method: :post, scope: :habit_confirmation_answer) do |f|
-      = f.hidden_field :habit_id, value: habit.id
-      = f.hidden_field :answer, value: 1
-      %button.btn.btn-dark{:type => "submit"} Yes!
+    - if habit.confirmed_today?
+      - if habit.answer
+        %button.btn.btn-info Yes!
+      - else 
+        %button.btn.btn-info No
 
-    .marg-r
+    - else
       = form_with(url:answer_path, method: :post, scope: :habit_confirmation_answer) do |f|
         = f.hidden_field :habit_id, value: habit.id
-        = f.hidden_field :answer, value: 0
-        %button.btn.btn-dark{:type => "submit"} No
+        = f.hidden_field :answer, value: 1
+        %button.btn.btn-dark{:type => "submit"} Yes!
 
-    = habit.habit_confirmations.where(answer: 1).count 
+      .marg-r
+        = form_with(url:answer_path, method: :post, scope: :habit_confirmation_answer) do |f|
+          = f.hidden_field :habit_id, value: habit.id
+          = f.hidden_field :answer, value: 0
+          %button.btn.btn-dark{:type => "submit"} No
+    
+    = habit.habit_confirmations.where(answer: 1).count - habit.habit_confirmations.where(answer: 0).count
     💎
 
 -# %table.table.table-hover

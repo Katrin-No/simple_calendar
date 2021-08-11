@@ -2,7 +2,7 @@ class Habit < ApplicationRecord
   has_many :habit_confirmations
 
   def confirmed_today?
-    habit_confirmations.where(confirmation_date: Date.today).count > 0
+    habit_confirmations.where(confirmation_date: Date.today).any?
   end
 
   def answer(date = Date.today)
