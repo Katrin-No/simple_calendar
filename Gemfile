@@ -59,3 +59,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "haml-rails", "~> 2.0"
 gem "simple_calendar", "~> 2.4"
 gem 'pry-byebug', '~> 3.8'
+gem 'pg', '~> 1.2', '>= 1.2.3'
