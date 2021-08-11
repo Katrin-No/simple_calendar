@@ -3,18 +3,18 @@ class HabitController < ApplicationController
   def index
     @habits = Habit.all.order(title: :asc)
     @habit = Habit.new
-    @habit_confirmation = HabitConfirmation.new
   end
 
-  def new
-    @habit = Habit.new
+  def answer
+    @habit_confirmation = HabitConfirmation.new(habit_confirmation_params).save!
+    redirect_to habits_path
   end
 
   def create
     @habit = Habit.new(habit_params)
 
     if @habit.save
-      # redirect_to , notice: "#{@habit.name} successfuly created."
+      redirect_to habits_path, notice: "#{@habit.name} successfuly created."
     else
       render "new", alert: "#{@habit.name} already exist"
     end
@@ -38,4 +38,14 @@ class HabitController < ApplicationController
   #   habit.destroy
   #   redirect_to _path, notice: "#{habit.name} deleted."
   # end
+
+  private
+
+  def habit_params
+    params.require(:habit).permit(:name)
+  end
+
+  def habit_confirmation_params
+    params.require(:habit_confirmation_answer).permit(:habit_id, :answer)
+  end
 end
