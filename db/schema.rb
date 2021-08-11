@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_10_115713) do
+ActiveRecord::Schema.define(version: 2021_08_11_082657) do
+
+  create_table "habit_confirmations", force: :cascade do |t|
+    t.integer "habit_id"
+    t.date "confirmation_date"
+    t.boolean "answer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["habit_id"], name: "index_habit_confirmations_on_habit_id"
+  end
+
+  create_table "habits", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "meetings", force: :cascade do |t|
     t.string "name"

@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  references: 
+  confirmations_date: 2021-08-11
+
+two:
+  references: 
+  confirmations_date: 2021-08-11
