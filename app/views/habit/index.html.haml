@@ -31,9 +31,12 @@
               = f.hidden_field :answer, value: 0
               %button.btn.btn-dark{:type => "submit"} No
         
-        %td.right
-          = habit.habit_confirmations.where(answer: 1).count - habit.habit_confirmations.where(answer: 0).count
+        %td.left
+          = habit.habit_confirmations.where(answer: 1).count - habit.habit_confirmations.where(answer: 0).count * 2
           💎
+          - if habit.habit_confirmations.where(answer: 0).count > 0
+            = habit.habit_confirmations.where(answer: 0).count * 2
+            💤
 
 .collabsible
   %button.btn.btn-info.titel-font#add_habit= link_to "Add habbit"
