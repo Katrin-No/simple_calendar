@@ -36,6 +36,7 @@
             = habit.diamonds
             💎
           - else
+            - habit.habit_confirmations.delete_all
             0 💎
             
           - if habit.habit_confirmations.where(answer: 0).count > 0
@@ -72,3 +73,9 @@
     
 -#     = habit.habit_confirmations.where(answer: 1).count - habit.habit_confirmations.where(answer: 0).count
 -#     💎
+
+hb = HabitConfirmation.new(confirmation_date: Date.today - 1.day, answer: 0, habit_id: 11)
+hb.save
+hb = HabitConfirmation.new(confirmation_date: Date.today - 2.day, answer: 0, habit_id: 11)
+hb = HabitConfirmation.new(confirmation_date: Date.today - 3.day, answer: 0, habit_id: 11)
+hb = HabitConfirmation.new(confirmation_date: Date.today - 4.day, answer: 0, habit_id: 11)

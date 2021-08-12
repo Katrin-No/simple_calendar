@@ -1,7 +1,7 @@
 class HabitController < ApplicationController
   
   def index
-    @habits = Habit.all.order(title: :asc)
+    @habits = Habit.all.order(name: :asc)
     @habit = Habit.new
   end
 
