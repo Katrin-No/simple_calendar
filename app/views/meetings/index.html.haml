@@ -10,7 +10,7 @@
   %tbody
     - @meetings.each do |meeting|
       %tr
-        %td= link_to meeting.name, meeting
+        %td.link= link_to meeting.name, meeting
         %td= meeting.start_time.strftime("%d.%m.%Y %H:%M")
-        %td= link_to 'Edit', edit_meeting_path(meeting)
-        %td= link_to 'x', meeting, method: :delete, data: { confirm: 'Are you sure?' }
+        %td.link= link_to 'Edit', edit_meeting_path(meeting)
+        %td.link= link_to 'x', meeting, method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,11 +1,11 @@
 = render 'meetings/nav'
 
-%table.table.table-responsive
+%table.table.table-responsive.desktop
   %thead
     %tr
-      %th.w70 Habit
+      %th.w50 Habit
       %th Done?
-      %th.right Points
+      %th.right.w20 Points
   %tbody    
     - @habits.each do |habit|
       %tr
@@ -31,17 +31,38 @@
               = f.hidden_field :answer, value: 0
               %button.btn.btn-dark{:type => "submit"} No
         
-        %td.left
-          - if habit.diamonds >= 0
-            = habit.diamonds
+        %td.left.desktop
+          - if habit.diamonds.count - habit.stones.count * 2 >= 0
+            = habit.diamonds.count - habit.stones.count * 2
             💎
           - else
-            - habit.habit_confirmations.delete_all
+            - habit.diamonds.count * 0
             0 💎
+          -# - if habit.diamonds >= 0
+          -#   = habit.diamonds
+          -#   💎
+          -# - else
+          -#   - habit.habit_confirmations.delete_all
+          -#   0 💎
             
-          - if habit.habit_confirmations.where(answer: 0).count > 0
-            = habit.habit_confirmations.where(answer: 0).count * 2
-            💤
+          - if habit.stones.count > 0
+            = habit.stones.count * 2
+            ⚠️
+        %td.left.mobile
+          - if habit.diamonds.count - habit.stones.count * 2 >= 0
+            .div
+              = habit.diamonds.count - habit.stones.count * 2
+              💎
+          - else
+            - habit.diamonds.count * 0
+            %p 0 💎
+            
+          - if habit.stones.count > 0
+            .div
+              = habit.stones.count * 2
+              ⚠️
+
+
 
 .collabsible
   %button.btn.btn-info.titel-font#add_habit= link_to "Add habbit"

@@ -10,6 +10,10 @@ class Habit < ApplicationRecord
   end
 
   def diamonds
-    self.habit_confirmations.where(answer: 1).count - self.habit_confirmations.where(answer: 0).count * 2
+    self.habit_confirmations.where(answer: 1)
+  end
+
+  def stones
+    self.habit_confirmations.where(answer: 0)
   end
 end
