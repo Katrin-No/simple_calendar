@@ -1,0 +1,51 @@
+@media screen
+  .wrapper
+    position: fixed
+    top: 0
+    left: 5px
+
+    .btn
+      color: white
+
+  // Liste gestalten 
+
+  .site-nav-list
+    display: flex
+    flex-flow: column
+    background: #181a1b
+    padding: 0
+    margin: 0
+
+    li
+      list-style: none
+
+    a
+      display: block
+      text-decoration: none
+      text-align: center
+
+      min-width: 72px
+      min-width: 70px
+      color: white
+
+      padding: 0.5rem 0.25rem
+
+  // Die nav-list ausblenden
+  .site-nav-list
+    max-height: 0
+    overflow: hidden
+    transition: max-height 1000ms ease-in-out
+
+  .show-menu+.site-nav-list
+    max-height: 100rem
+    transition: max-height 1000ms ease-in-out
+    // some animation 
+
+  // ab 768px Menü-Botton ausblenden 
+  @media screen and (min-width: 768px)
+    nav.site-nav, .wrapper
+      display: none
+
+  @media screen and (max-width: 767px)
+    li.nav-item.dropdown
+      display: none

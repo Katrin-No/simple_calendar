@@ -1,5 +1,12 @@
 = render 'meetings/nav'
 
+.event 
+  Add your healthy habbits and track them!
+-# .event 
+-#   goal_archieved &nbsp; ? &nbsp; become 💎 &nbsp; : &nbsp; lose 2 💎 become ⚠️
+
+
+
 %table.table.table-responsive.desktop
   %thead
     %tr
@@ -59,7 +66,7 @@
             
           - if habit.stones.count > 0
             .div
-              = habit.stones.count * 2
+              = habit.stones.count
               ⚠️
 
 
