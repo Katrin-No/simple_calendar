@@ -8,4 +8,8 @@ class Habit < ApplicationRecord
   def answer(date = Date.today)
     habit_confirmations.find_by(confirmation_date: date).answer
   end
+
+  def diamonds
+    self.habit_confirmations.where(answer: 1).count - self.habit_confirmations.where(answer: 0).count * 2
+  end
 end
