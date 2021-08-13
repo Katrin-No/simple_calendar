@@ -6,12 +6,29 @@
         %span.calendar-title
           = link_to current_month, month_path
         >>
-      %li.nav-item.end
+      %li.nav-item.end.dropdown
         %span.calendar-title
           = link_to "Habits", habits_path, class: "marg-r"
-      %li.nav-item
+      %li.nav-item.dropdown
         %span.calendar-title
           = link_to "Add event", new_meeting_path, class: "marg-r"
-      %li.nav-item
+      %li.nav-item.dropdown
         %span.calendar-title
           = link_to "All events", meetings_path
+
+      %li.nav-item
+        .wrapper
+          %button.btn{:onclick => "this.classList.toggle('show-menu')"}
+            .burger 
+            .burger
+            .burger
+          %ul.site-nav-list
+            %li
+              %span.calendar-title
+                = link_to "Habits", habits_path
+            %li
+              %span.calendar-title
+                = link_to "Add event", new_meeting_path
+            %li
+              %span.calendar-title
+                = link_to "All events", meetings_path

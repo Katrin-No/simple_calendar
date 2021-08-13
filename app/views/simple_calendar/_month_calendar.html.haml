@@ -17,24 +17,23 @@
         %span.calendar-title
           = link_to "All events", meetings_path
 
+      -#My dropdown
       %li.nav-item
-        %nav
-          .wrapper
-            %button.btn{:onclick => "this.classList.toggle('show-menu')"} =
-            %ul.site-nav-list
-              %li
-                %span.calendar-title
-                  = link_to "Habits", habits_path
-              %li
-                %span.calendar-title
-                  = link_to "Add event", new_meeting_path
-              %li
-                %span.calendar-title
-                  = link_to "All events", meetings_path
-
-      -# %li.nav-item
-      -#   %span.calendar-title
-      -#     = link_to "Week", week_path
+        .wrapper
+          %button.btn{:onclick => "this.classList.toggle('show-menu')"}
+            .burger 
+            .burger
+            .burger
+          %ul.site-nav-list
+            %li
+              %span.calendar-title
+                = link_to "Habits", habits_path
+            %li
+              %span.calendar-title
+                = link_to "Add event", new_meeting_path
+            %li
+              %span.calendar-title
+                = link_to "All events", meetings_path
 
   %table.table.table-striped.table-responsive
     %thead
