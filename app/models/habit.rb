@@ -16,4 +16,9 @@ class Habit < ApplicationRecord
   def stones
     self.habit_confirmations.where(answer: 0)
   end
+
+  def month(d)
+    days_in_month = d.beginning_of_month..d.end_of_month
+    self.habit_confirmations.where(confirmation_date: days_in_month, answer: 1).count
+  end
 end
