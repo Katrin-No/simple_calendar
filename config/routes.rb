@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   post "/habits", to: "habit#create", as: :create
   post "/answer", to: "habit#answer", as: :answer
   get "/edit/:id", to: "habit#edit", as: :edit
-  patch "/edit/:id", to: "habit#update", as: :update
+  post "/edit/:id", to: "habit#update", as: :update
   delete "/:id/delete", to: "habit#delete", as: :delete
 end

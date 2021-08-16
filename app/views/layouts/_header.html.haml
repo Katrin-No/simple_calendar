@@ -3,3 +3,13 @@
 
 .slogan
   ✧ Find positive in every day! ✧
+
+- if flash[:notice].present?
+  .alert.info{role: "alert"}
+    = sanitize flash[:notice], tags: %w(br ul li strong)
+
+- if flash[:alert].present?
+  .alert.alert-danger{role: "alert"}
+    = sanitize flash[:alert], tags: %w(br ul li strong)
+
+

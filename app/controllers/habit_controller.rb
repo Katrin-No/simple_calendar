@@ -16,7 +16,7 @@ class HabitController < ApplicationController
     @habit = Habit.new(habit_params)
 
     if @habit.save
-      redirect_to habits_path, notice: "#{@habit.name} successfuly created."
+      redirect_to habits_path, notice: "#{@habit.name} successfuly created"
     else
       render "new", alert: "#{@habit.name} already exist"
     end
@@ -25,21 +25,20 @@ class HabitController < ApplicationController
   def edit
   end
 
-  # def update
-  #   respond_to do |format|
-  #     if @habit.update(habit_params)
-  #       format.html { redirect_to @habit, notice: 'Habit succesfully edited' }
-  #     else
-  #       format.html { render :edit }
-  #     end
-  #   end
-  # end
+  def update
+    @habit = Habit.find(params[:id])
+    if @habit.update(habit_params)
+      redirect_to @habit, notice: 'Habit succesfully edited'
+    else
+      render :edit 
+    end
+  end
 
-  # def delete
-  #   habit = Habit.find(params[:id])
-  #   habit.destroy
-  #   redirect_to _path, notice: "#{habit.name} deleted."
-  # end
+  def delete
+    @habit = Habit.find(params[:id])
+    @habit.destroy
+    redirect_to habits_path, notice: "#{@habit.name} deleted"
+  end
 
   private
 
