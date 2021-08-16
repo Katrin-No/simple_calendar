@@ -23,14 +23,15 @@ class HabitController < ApplicationController
   end
 
   def edit
+    @habit = Habit.find(params[:id])
   end
 
   def update
     @habit = Habit.find(params[:id])
     if @habit.update(habit_params)
-      redirect_to @habit, notice: 'Habit succesfully edited'
+      redirect_to habits_path, notice: 'Habit succesfully edited'
     else
-      render :edit 
+      render :edit
     end
   end
 

@@ -1,6 +1,7 @@
 = render 'meetings/nav'
 
-.event Editing habit
+.event Edit habit: #{@habit.name}
 
-= render 'form'
+-# = render partial: 'form', locals: {url: update_path(@habit)}
+= render 'form', url: update_path(@habit)
 

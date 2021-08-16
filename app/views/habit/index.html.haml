@@ -73,7 +73,7 @@
 .collabsible
   %button.btn.btn-info.titel-font.open Add habbit
   .show
-    = render 'form'
+    = render partial: 'form', locals: {url: create_path}
 
 -# %ul
 -#   %li August
@@ -103,18 +103,18 @@
                   = habit.month(i)
                   💎
 
--# .collabsible
--#   %button.btn.btn-info.titel-font.open All
--#   .show
--#     %table.table.table-responsive
--#       %thead
--#         %tr
--#           %th Name
--#           %th{:colspan => "2"} Settings
+.collabsible
+  %button.btn.btn-info.titel-font.open All
+  .show
+    %table.table.table-responsive
+      %thead
+        %tr
+          %th Name
+          %th{:colspan => "2"} Settings
 
--#       %tbody
--#         - @habits.each do |habit|
--#           %tr
--#             %td= habit.name
--#             %td.link= link_to 'Edit', edit_path(habit)
--#             %td.link= link_to 'x', delete_path(habit), method: :delete, data: { confirm: 'Are you sure?' }
+      %tbody
+        - @habits.each do |habit|
+          %tr
+            %td= habit.name
+            %td.link= link_to 'Edit', edit_path(habit)
+            %td.link= link_to 'x', delete_path(habit), method: :delete, data: { confirm: 'Are you sure?' }
