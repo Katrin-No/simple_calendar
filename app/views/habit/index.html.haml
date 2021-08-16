@@ -7,72 +7,72 @@
 
 .collabsible
   %button.btn.btn-info.titel-font.open Check list
-
-  %table.table.table-responsive.desktop
-    %thead
-      %tr
-        %th.w50 Habit
-        %th Done?
-        %th.right.w20 Points
-    %tbody    
-      - @habits.each do |habit|
+  .show
+    %table.table.desktop
+      %thead
         %tr
-          %td= habit.name 
+          %th.w50 Habit
+          %th Done?
+          %th.right.w20 Points
+      %tbody    
+        - @habits.each do |habit|
+          %tr
+            %td= habit.name 
 
-          - if habit.confirmed_today?
-            %td 
-              - if habit.answer
-                %button.btn.btn-info Yes!
-              - else 
-                %button.btn.btn-info No
+            - if habit.confirmed_today?
+              %td 
+                - if habit.answer
+                  %button.btn.btn-info Yes!
+                - else 
+                  %button.btn.btn-info No
 
-          - else
-            %td.flex
-              = form_with(url:answer_path, method: :post, scope: :habit_confirmation_answer) do |f|
-                = f.hidden_field :habit_id, value: habit.id
-                = f.hidden_field :answer, value: 1
-                %button.btn.btn-dark.marg-r1{:type => "submit"} Yes!
-
-              
-              = form_with(url:answer_path, method: :post, scope: :habit_confirmation_answer) do |f|
-                = f.hidden_field :habit_id, value: habit.id
-                = f.hidden_field :answer, value: 0
-                %button.btn.btn-dark{:type => "submit"} No
-          
-          %td.left.desktop
-            - if habit.diamonds.count - habit.stones.count * 2 >= 0
-              = habit.diamonds.count - habit.stones.count * 2
-              💎
             - else
-              - habit.diamonds.count * 0
-              0 💎
-            -# - if habit.diamonds >= 0
-            -#   = habit.diamonds
-            -#   💎
-            -# - else
-            -#   - habit.habit_confirmations.delete_all
-            -#   0 💎
-              
-            - if habit.stones.count > 0
-              = habit.stones.count * 2
-              ⚠️
-          %td.left.mobile
-            - if habit.diamonds.count - habit.stones.count * 2 >= 0
-              .div
-                = habit.diamonds.count - habit.stones.count * 2
+              %td.flex
+                = form_with(url:answer_path, method: :post, scope: :habit_confirmation_answer) do |f|
+                  = f.hidden_field :habit_id, value: habit.id
+                  = f.hidden_field :answer, value: 1
+                  %button.btn.btn-dark.marg-r1{:type => "submit"} Yes!
+
+                
+                = form_with(url:answer_path, method: :post, scope: :habit_confirmation_answer) do |f|
+                  = f.hidden_field :habit_id, value: habit.id
+                  = f.hidden_field :answer, value: 0
+                  %button.btn.btn-dark{:type => "submit"} No
+            
+            %td.left.desktop
+              - if habit.diamonds.count - habit.stones.count >= 0
+                = habit.diamonds.count - habit.stones.count
                 💎
-            - else
-              - habit.diamonds.count * 0
-              %p 0 💎
-              
-            - if habit.stones.count > 0
-              .div
+              - else
+                - habit.diamonds.count * 0
+                0 💎
+              -# - if habit.diamonds >= 0
+              -#   = habit.diamonds
+              -#   💎
+              -# - else
+              -#   - habit.habit_confirmations.delete_all
+              -#   0 💎
+                
+              - if habit.stones.count > 0
                 = habit.stones.count
                 ⚠️
+            %td.left.mobile
+              - if habit.diamonds.count - habit.stones.count >= 0
+                .div
+                  = habit.diamonds.count - habit.stones.count
+                  💎
+              - else
+                - habit.diamonds.count * 0
+                %p 0 💎
+                
+              - if habit.stones.count > 0
+                .div
+                  = habit.stones.count
+                  ⚠️
 
 .collabsible
   %button.btn.btn-info.titel-font.open Add habbit
-  .form
+  .show
     = render 'form'
 
 -# %ul
@@ -86,19 +86,35 @@
     
 .collabsible
   %button.btn.btn-info.titel-font.open Statistics
-
-  %table.table.table-responsive
-    %thead
-      %tr
-        %th Habit
-        - last_6_months.each do |i|
-          %th= i.strftime("%m %Y")
-    %tbody  
-      - @habits.each do |habit|  
+  .show
+    %table.table.table-responsive
+      %thead
         %tr
-          %td= habit.name 
+          %th Habit
           - last_6_months.each do |i|
-            %td
-              - if habit.month(i) > 0
-                = habit.month(i)
-                💎
+            %th= i.strftime("%m %Y")
+      %tbody  
+        - @habits.each do |habit|  
+          %tr
+            %td= habit.name 
+            - last_6_months.each do |i|
+              %td
+                - if habit.month(i) > 0
+                  = habit.month(i)
+                  💎
+
+-# .collabsible
+-#   %button.btn.btn-info.titel-font.open All
+-#   .show
+-#     %table.table.table-responsive
+-#       %thead
+-#         %tr
+-#           %th Name
+-#           %th{:colspan => "2"} Settings
+
+-#       %tbody
+-#         - @habits.each do |habit|
+-#           %tr
+-#             %td= habit.name
+-#             %td.link= link_to 'Edit', edit_path(habit)
+-#             %td.link= link_to 'x', habits_path, method: :delete, data: { confirm: 'Are you sure?' }
