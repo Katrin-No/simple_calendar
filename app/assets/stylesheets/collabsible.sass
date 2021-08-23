@@ -1,5 +1,5 @@
 .open
-  width: 130px
+  width: 100%
   background-color: #0395f7
   a
     color: white
@@ -8,15 +8,40 @@
 
 .collabsible
   position: relative
+  .open
+    display: flex
+    &:after
+      margin-left: auto
+      content: "expand_more"
+      font-family: 'Material Icons'
+      vertical-align: bottom
   .show
     display: none
   .form-group
     margin-top: 1rem
 
 .collabsible.active
+  .open
+    &:after
+      margin-left: auto
+      content: "expand_less"
+      font-family: 'Material Icons'
+      vertical-align: bottom
 
 .collabsible-close
+  .open
+    display: flex
+    &:after
+      margin-left: auto
+      content: "expand_less"
+      font-family: 'Material Icons'
+      vertical-align: bottom
   .show
     display: block
 
 .collabsible-close.active
+  .open
+    &:after
+      content: "expand_more"
+      font-family: 'Material Icons'
+      vertical-align: bottom
