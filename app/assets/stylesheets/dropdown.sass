@@ -1,9 +1,14 @@
 @media screen
+  .relative
+    position: relative
   .wrapper
     // position: fixed
     // top: 0
     // left: 5px
     text-align: right
+    position: absolute
+    right: 6px
+    width: 100%
 
     // .btn
     //   color: white
@@ -85,7 +90,7 @@
     flex-flow: column
     background: #181a1b
     padding: 0
-    margin: 0
+    margin-top: -.5rem
 
     li
       list-style: none
@@ -93,7 +98,7 @@
     a
       display: block
       text-decoration: none
-      text-align: right
+      text-align: center
 
       min-width: 72px
       min-width: 70px
@@ -109,6 +114,7 @@
 
   .show-menu+.site-nav-list
     max-height: 100rem
+    margin-top: -.5rem
     transition: max-height 1000ms ease-in-out
     // some animation 
 
