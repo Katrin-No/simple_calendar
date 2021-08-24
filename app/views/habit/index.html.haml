@@ -40,23 +40,25 @@
                   %button.btn.btn-dark{:type => "submit"} No
             
             %td.left.desktop
-              -# - if habit.diamonds.count - habit.stones.count >= 0
-              = habit.diamonds.count
-              💎
+              - if habit.diamonds.count > 0
+                = habit.diamonds.count
+                💎
               -# - else
               -#   - habit.diamonds.count * 0
               -#   0 💎
-              -# - if habit.stones.count > 0
-              = habit.stones.count
-              ⚠️
-
-            %td.left.mobile
-              .div
-                = habit.diamonds.count
-                💎
-              .div
+              - if habit.stones.count > 0
                 = habit.stones.count
                 ⚠️
+
+            %td.left.mobile
+              - if habit.diamonds.count > 0
+                .div
+                  = habit.diamonds.count
+                  💎
+              - if habit.stones.count > 0
+                .div
+                  = habit.stones.count
+                  ⚠️
 
 .collabsible
   %button.btn.btn-info.titel-font.open Add habbit
