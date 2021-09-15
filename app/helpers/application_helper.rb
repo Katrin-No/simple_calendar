@@ -8,4 +8,10 @@ module ApplicationHelper
         date == date.beginning_of_month
       end
   end
+
+  def last_4_months
+    (Date.today.beginning_of_month - 3.months..Date.today.beginning_of_month).select do |date|
+        date == date.beginning_of_month
+      end
+  end
 end

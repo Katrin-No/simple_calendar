@@ -78,16 +78,31 @@
   %button.btn.btn-info.titel-font.open Statistics
   .show
     %table.table.table-responsive
-      %thead
+      %thead.desctop 
         %tr
           %th Habit
           - last_6_months.each do |i|
             %th= i.strftime("%m %Y")
-      %tbody  
+      %tbody.desctop  
         - @habits.each do |habit|  
           %tr
             %td= habit.name 
             - last_6_months.each do |i|
+              %td
+                - if habit.month(i) > 0
+                  = habit.month(i)
+                  💎
+    
+      %thead.mobile 
+        %tr
+          %th Habit
+          - last_4_months.each do |i|
+            %th= i.strftime("%m %Y")
+      %tbody.mobile 
+        - @habits.each do |habit|  
+          %tr
+            %td= habit.name 
+            - last_4_months.each do |i|
               %td
                 - if habit.month(i) > 0
                   = habit.month(i)
