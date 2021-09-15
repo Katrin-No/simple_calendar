@@ -3,4 +3,4 @@
 
   - meetings.each do |meeting|
     .event
-      = meeting.name 
+      = link_to meeting.name, edit_meeting_path(meeting)
