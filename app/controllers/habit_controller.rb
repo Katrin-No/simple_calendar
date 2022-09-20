@@ -5,6 +5,9 @@ class HabitController < ApplicationController
     @habit = Habit.new
   end
 
+  def export
+  end
+
   def answer
     @habit_confirmation = HabitConfirmation.new(habit_confirmation_params)
     @habit_confirmation.confirmation_date = Date.today

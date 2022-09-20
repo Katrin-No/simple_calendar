@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post "/habits", to: "habit#create", as: :create
   post "/answer", to: "habit#answer", as: :answer
   get "/habits/edit/:id", to: "habit#edit", as: :edit
+  get "/habits/export", to: "habit#export", as: :export
   patch "/habits/edit/:id", to: "habit#update", as: :update
   delete "/:id/delete", to: "habit#delete", as: :delete
 end

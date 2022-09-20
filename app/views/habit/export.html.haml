@@ -1,0 +1,5 @@
+- data = {}
+- data[:habit_confirmations] = HabitConfirmation.all
+- data[:habits] = Habit.all
+- data[:meetings] = Meeting.all
+= data.to_json
